@@ -10,6 +10,15 @@ dotenv.config({
 })
 
 connectDB()
+// since the async method returns a promise after its completion so we can apply then and catch 
+.then(() => {
+    app.listen(process.env.PORT || 4000, () => {
+        console.log(`Server is running at port : ${process.env.PORT}`)
+    })
+})
+.catch((err) => {
+    console.log("MONGO db connection failed !!! ", err);
+})
 /*
 const app = express()
 
