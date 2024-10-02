@@ -8,20 +8,21 @@ import connectDB from './db/index.js';
 dotenv.config({
     path: './env'
 })
+const app = express()
 
 connectDB()
 // since the async method returns a promise after its completion so we can apply then and catch 
 .then(() => {
-    app.listen(process.env.PORT || 4000, () => {
+    app.listen(process.env.PORT || 8000, () => {
         console.log(`Server is running at port : ${process.env.PORT}`)
     })
 })
 .catch((err) => {
     console.log("MONGO db connection failed !!! ", err);
 })
-/*
-const app = express()
 
+
+/*
 (async () => {
     try {
        await mongoose.connect(`${process.env.MONGODB_URI}/ ${DB_NAME}`)
