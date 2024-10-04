@@ -7,7 +7,7 @@ const userSchema = new Schema(
         username : {
             type : String,
             required : true,
-            lowecase : true,
+            lowercase : true,
             unique : true,
             trim : true,
             index : true,
@@ -19,7 +19,7 @@ const userSchema = new Schema(
             unique : true,
             trim : true,
         },
-        fullname : {
+        fullName : {
             type : String,
             required : true,
             lowecase : true,
@@ -38,8 +38,8 @@ const userSchema = new Schema(
             ref : "Video"
         },
         password : {
-            types : String,
-            requied : [true, 'Password is required']
+            type : String,
+            required : [true, 'Password is required']
         },
         refreshToken : {
             type : String

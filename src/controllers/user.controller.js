@@ -32,7 +32,7 @@ const registerUser = asyncHandler (async (req, res) => {
         throw new ApiError(400, "password is required")
     }
 
-    const exitedUser = User.findOne({
+    const exitedUser = await User.findOne({
         $or: [{ username },{ email }]
     })
     if(exitedUser){
@@ -59,7 +59,7 @@ const registerUser = asyncHandler (async (req, res) => {
         coverImage: coverImage?.url || "", //since the coverImage is not mandatory so it is possible that no url is generated so we have to check ? and then proceed 
         email,
         password,
-        username: username.toLowerCase()
+        username: username
 
     })
 
