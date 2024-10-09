@@ -243,7 +243,7 @@ const getCurrentUser = asyncHandler(async (req, res) => {
     // const currentUser =await User.findById(req.user?.id)
     return res
     .status(200)
-    .json(200, req.user, "current user found successfully")
+    .json(new ApiResponse(200, req.user, "current user found successfully"))
 
 })
 
@@ -255,12 +255,12 @@ const updateAccountDetails = asyncHandler(async(req, res) => {
 
     }
 
-    const user = User.findByIdAndUpdate(
+    const user =await User.findByIdAndUpdate(
         req.user?._id,
         {
             $set : {
                 fullName,
-                email
+                email: email
             }
         },
         {new : true}
